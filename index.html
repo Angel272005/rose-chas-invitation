@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Rose &amp; Chas – Betrothal Invitation</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Cormorant+Garamond:ital,wght@0,400;1,400&display=swap">
+<style>
+:root{--navy:#0d1b2e;--navy2:#162841;--gold:#b0934f;--gold2:#d4bb7e;--ink:#2b2b2b;--paper:#fffdf8;--cream:#efe6d2;
+--script:'Great Vibes','Snell Roundhand',cursive;--serif:'Playfair Display','Bodoni 72',Georgia,serif;--body:'Cormorant Garamond',Georgia,serif;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--navy);color:var(--paper);font-family:var(--body);font-size:19px;overflow-x:hidden}
+body.locked{overflow:hidden;height:100%}
+
+/* ---------- Envelope scene ---------- */
+#scene{position:fixed;inset:0;z-index:20;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2.2rem;
+background:radial-gradient(circle at 50% 40%,var(--navy2),var(--navy) 70%);transition:opacity 1s ease,visibility 1s}
+#scene.gone{opacity:0;visibility:hidden;pointer-events:none}
+.hint{font-family:var(--serif);letter-spacing:.3em;font-size:.72rem;text-transform:uppercase;color:var(--gold2);animation:pulse 2s infinite}
+@keyframes pulse{50%{opacity:.35}}
+.env{position:relative;width:min(88vw,380px);aspect-ratio:3/2;perspective:1200px;cursor:pointer;border:0;background:none;padding:0;
+filter:drop-shadow(0 25px 35px rgba(0,0,0,.5))}
+.env>*{position:absolute}
+.back{inset:0;background:#d9cba8;border-radius:4px}
+.card{left:6%;right:6%;top:6%;bottom:6%;background:var(--paper);border:1px solid var(--gold);color:var(--ink);z-index:2;
+display:flex;flex-direction:column;align-items:center;justify-content:center;transition:transform 1s .6s cubic-bezier(.3,.8,.3,1)}
+.card b{font-family:var(--script);font-weight:400;font-size:2.4rem;color:var(--gold);line-height:1}
+.card small{font-family:var(--serif);font-size:.55rem;letter-spacing:.25em;margin-top:.5rem}
+.front{inset:0;background:var(--cream);z-index:3;border-radius:4px;clip-path:polygon(0 0,50% 58%,100% 0,100% 100%,0 100%)}
+.flap{left:0;right:0;top:0;height:58%;background:linear-gradient(#e6d8b6,#d4c49c);z-index:4;transform-origin:top;
+clip-path:polygon(0 0,100% 0,50% 100%);transition:transform .8s ease,z-index 0s .4s}
+.seal{left:50%;top:58%;width:62px;height:62px;margin:-31px 0 0 -31px;border-radius:50%;z-index:5;
+background:radial-gradient(circle at 35% 30%,var(--gold2),var(--gold) 60%,#7d6630);display:grid;place-items:center;
+font-family:var(--serif);color:#fff;font-size:.95rem;box-shadow:0 3px 8px rgba(0,0,0,.4);transition:opacity .4s}
+.env.open .flap{transform:rotateX(180deg);z-index:1}
+.env.open .seal{opacity:0}
+.env.open .card{transform:translateY(-62%)}
+
+/* ---------- Invitation ---------- */
+main{opacity:0;transition:opacity 1.2s}
+main.show{opacity:1}
+section{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:4rem 1.5rem;position:relative}
+.hero{background:var(--paper);color:var(--ink)}
+.verse{font-style:italic;font-size:.95rem;max-width:30ch;margin:0 0 2.2rem}
+.verse span{display:block;font-size:.75rem;font-style:normal;letter-spacing:.1em;margin-top:.3rem}
+.names{font-family:var(--script);color:var(--gold);font-size:clamp(4.2rem,22vw,8rem);line-height:.95;margin:0}
+.names i{display:block;font-style:normal;font-family:var(--serif);color:var(--ink);font-size:1.6rem;margin:.2rem 0}
+.together{font-family:var(--serif);letter-spacing:.3em;font-size:.7rem;text-transform:uppercase;margin:2rem 0 1rem}
+.date{display:flex;align-items:center;gap:1rem;font-family:var(--serif);color:var(--gold);letter-spacing:.15em}
+.date .d{border-left:1px solid #b87;border-right:1px solid #b87;padding:0 1rem;line-height:1.1}
+.date .d b{display:block;font-size:2.4rem;font-weight:400}
+.scroll{position:absolute;bottom:1.5rem;font-size:.7rem;letter-spacing:.3em;color:var(--gold);animation:pulse 2s infinite}
+.intro{background:var(--navy)}
+.intro p{max-width:28ch;font-style:italic;font-size:1.25rem;margin:0 0 1.5rem}
+.name{font-family:var(--serif);color:var(--gold2);font-size:1.7rem;letter-spacing:.12em;text-transform:uppercase;margin:.3rem 0}
+.parents{font-style:italic;font-size:1.05rem;opacity:.9;margin:0}
+.amp{font-style:italic;margin:1.2rem 0;color:var(--gold)}
+.mono{font-family:var(--serif);font-size:5rem;color:var(--gold);margin:1.5rem 0 0;line-height:1}
+.details{background:var(--navy2);gap:1.5rem}
+h2{font-family:var(--script);font-weight:400;font-size:3rem;color:var(--gold2);margin:0 0 .5rem}
+.tile{border:1px solid var(--gold);padding:1.8rem 1.5rem;width:min(100%,380px);background:rgba(255,255,255,.03)}
+.tile h3{font-family:var(--serif);letter-spacing:.25em;font-size:.8rem;color:var(--gold2);margin:0 0 .8rem;text-transform:uppercase;font-weight:400}
+.tile .big{font-family:var(--serif);font-size:1.6rem;margin:0}
+.tile p{margin:.4rem 0}
+.btn{display:inline-block;margin-top:.9rem;padding:.65rem 1.4rem;border:1px solid var(--gold);color:var(--gold2);text-decoration:none;
+font-family:var(--serif);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;transition:.3s}
+.btn:hover,.btn:focus-visible{background:var(--gold);color:var(--navy)}
+.close{background:var(--paper);color:var(--ink)}
+.close h2{color:var(--gold)}
+.rule{width:min(100%,380px);height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:1.5rem 0}
+.from{font-size:1.05rem;line-height:1.7}
+.from b{font-family:var(--serif);font-weight:400;color:var(--gold)}
+.contact a{color:var(--ink);text-decoration:none;font-family:var(--serif);letter-spacing:.08em;display:block;margin:.3rem 0}
+.rv{opacity:0;transform:translateY(30px);transition:1s ease}
+.rv.in{opacity:1;transform:none}
+.spark{position:fixed;top:-10px;width:6px;height:6px;border-radius:50%;background:var(--gold2);opacity:.7;z-index:30;pointer-events:none;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(110vh) translateX(40px);opacity:0}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition-duration:.01s!important}}
+</style>
+</head>
+<body class="locked">
+
+<div id="scene">
+  <button class="env" id="env" aria-label="Open the invitation">
+    <div class="back"></div>
+    <div class="card"><b>Rose &amp; Chas</b><small>BETROTHAL</small></div>
+    <div class="front"></div>
+    <div class="flap"></div>
+    <div class="seal">R&amp;C</div>
+  </button>
+  <div class="hint">Tap the envelope to open</div>
+</div>
+
+<main id="main">
+  <section class="hero">
+    <p class="verse rv">“I hold you in my heart, for we have shared together God’s blessings.”<span>Philippians 1:7</span></p>
+    <h1 class="names rv">Rose<i>&amp;</i>Chas</h1>
+    <p class="together rv">Together with their families</p>
+    <div class="date rv"><span>JAN</span><span class="d">MON<b>26</b></span><span>2026</span></div>
+    <p class="together rv" style="margin-top:1.5rem">We invite you to join our betrothal</p>
+    <div class="scroll">SCROLL ↓</div>
+  </section>
+
+  <section class="intro">
+    <p class="rv">With divine blessings and joyful hearts, we request your gracious presence at the betrothal ceremony of</p>
+    <div class="rv">
+      <div class="name">Rose Mary Jose</div>
+      <p class="parents">D/O Salash Thomas &amp; Ranimol Abraham<br>Parampuzhayil (H), Mutholy, Pala</p>
+      <div class="amp">and</div>
+      <div class="name">Chas Chacko</div>
+      <p class="parents">S/O M.V. Kuriakose &amp; Subi Abraham<br>Karimbil (H), Karukulam, Kizhakkambalam</p>
+    </div>
+    <div class="mono rv">R&amp;C</div>
+  </section>
+
+  <section class="details">
+    <h2 class="rv">The Celebration</h2>
+    <div class="tile rv">
+      <h3>Betrothal Ceremony</h3>
+      <p class="big">12:00 PM</p>
+      <p>Monday, 26 January 2026</p>
+      <p>St. Thomas Cathedral Church, Pala</p>
+      <a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=St.+Thomas+Cathedral+Church+Pala">View Map</a>
+    </div>
+    <div class="tile rv">
+      <h3>Reception</h3>
+      <p class="big">Thereafter</p>
+      <p>Bishop Vayalil Memorial Parish Hall, Pala</p>
+      <a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Bishop+Vayalil+Memorial+Parish+Hall+Pala">View Map</a>
+    </div>
+    <a class="btn rv" target="_blank" rel="noopener" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Betrothal+of+Rose+%26+Chas&dates=20260126T063000Z/20260126T083000Z&location=St.+Thomas+Cathedral+Church,+Pala">Add to Calendar</a>
+  </section>
+
+  <section class="close">
+    <h2 class="rv">With Best Compliments</h2>
+    <div class="from rv"><b>Tom Jose</b><br><b>Angel Mary Jose</b></div>
+    <div class="rule rv"></div>
+    <div class="contact rv"><a href="tel:9447104912">9447104912</a><a href="tel:8301964912">8301964912</a></div>
+    <p class="rv" style="font-size:.85rem;opacity:.6;margin-top:2rem">R&amp;C · 26.01.26</p>
+  </section>
+</main>
+
+<script>
+const env=document.getElementById('env'),scene=document.getElementById('scene'),main=document.getElementById('main');
+function sparkles(){for(let i=0;i<24;i++){const s=document.createElement('i');s.className='spark';
+s.style.left=Math.random()*100+'vw';s.style.animationDuration=(3+Math.random()*3)+'s';s.style.animationDelay=Math.random()*1.5+'s';
+document.body.appendChild(s);setTimeout(()=>s.remove(),7000)}}
+env.addEventListener('click',()=>{
+  if(env.classList.contains('open'))return;
+  env.classList.add('open');
+  setTimeout(()=>{scene.classList.add('gone');main.classList.add('show');document.body.classList.remove('locked');window.scrollTo(0,0);sparkles()},2300);
+});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.2});
+document.querySelectorAll('.rv').forEach((el,i)=>{el.style.transitionDelay=(i%3)*.15+'s';io.observe(el)});
+</script>
+</body>
+</html>
